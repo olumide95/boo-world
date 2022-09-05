@@ -33,6 +33,7 @@ module.exports = function() {
     body('socionics', 'Socionics is required').exists(),
     body('sloan', 'Sloan is required').exists(),
     body('psyche', 'Psyche is required').exists(),
+    body('enneagram', 'Enneagram is required').exists(),
     async function(req, res) {
         
         const errors = validationResult(req);
