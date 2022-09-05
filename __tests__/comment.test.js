@@ -71,4 +71,14 @@ describe("comment", () => {
         expect(response.body.comments[1].title).toEqual(comment1.title)
     })
 
+    it("can like comments", async() => {
+        const comment =  await createComment(1)
+        const name = 'John'
+
+        const response = await request.post(`/comments/comment_like/${comment._id}`).send({name})
+
+        expect(response.status).toBe(201);
+        expect(response.body.message).toBe('You have successfully liked this comment');
+    })
+
 })
