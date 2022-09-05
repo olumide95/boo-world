@@ -21,12 +21,11 @@ const UserSchema = new Schema({
 });
 
 const CommentSchema = new Schema({
-    name: String,
     title: String,
     comment: String,
     votes: Array,
     profileId: mongoose.Types.ObjectId,
-    userId: mongoose.Types.ObjectId,
+    username: mongoose.Types.ObjectId,
     likes: { type: Number, default: 0 },
     created: { type: Date, default: Date.now }
 });
