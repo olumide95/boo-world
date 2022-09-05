@@ -1,6 +1,8 @@
 const app = require("../app");
 const supertest = require("supertest");
 const request = supertest(app);
+const { setupDB } = require('../test-setup')
+setupDB()
 
 describe("profile", () => {
 
