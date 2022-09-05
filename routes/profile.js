@@ -2,29 +2,25 @@
 
 const express = require('express');
 const router = express.Router();
-
-const profiles = [
-  {
-    "id": 1,
-    "name": "A Martinez",
-    "description": "Adolph Larrue Martinez III.",
-    "mbti": "ISFJ",
-    "enneagram": "9w3",
-    "variant": "sp/so",
-    "tritype": 725,
-    "socionics": "SEE",
-    "sloan": "RCOEN",
-    "psyche": "FEVL",
-    "image": "https://soulverse.boo.world/images/1.png",
-  }
-];
+const { Profile } = require("../models.js")
 
 module.exports = function() {
 
-  router.get('/*', function(req, res, next) {
-    res.render('profile_template', {
-      profile: profiles[0],
+  router.get('/:id', async function(req, res, next) {
+    const { id }  = req.params 
+    const profile = await Profile.findOne({})
+
+    if(!profile){
+      return res.status(404).json({
+        message: `No profile with id (${id}) found`,
+        status: false
+       })
+    }
+
+    return res.render('profile_template', {
+      profile: profile,
     });
+
   });
 
   return router;
