@@ -25,7 +25,7 @@ const CommentSchema = new Schema({
     comment: String,
     votes: Array,
     profileId: mongoose.Types.ObjectId,
-    username: mongoose.Types.ObjectId,
+    userId: mongoose.Types.ObjectId,
     likes: { type: Number, default: 0 },
     created: { type: Date, default: Date.now }
 });
